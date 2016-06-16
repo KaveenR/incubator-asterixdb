@@ -106,7 +106,7 @@ app.controller('queryCtrl', function($rootScope, $scope, $http, recordFunctions)
       }
     },
     function(response){
-      $scope.statusText = "Error Occured Executing Query";
+      $scope.statusText = "Error Occurred Executing Query";
       $scope.errorText = response.data.summary;
       $scope.maximized = false;
     });
@@ -120,12 +120,12 @@ app.controller('queryCtrl', function($rootScope, $scope, $http, recordFunctions)
       $scope.results = response.data;
       console.log(response);
       timer = new Date().getTime() - timer;
-      $scope.statusText = "Query returned " + $scope.results.length + " record in " + timer + "ms";
+      $scope.statusText = "Query returned " + $scope.results.length + " records in " + timer + "ms";
       $scope.errorText = null;
       $scope.maximized = false;
     },
     function(response){
-      $scope.statusText = "Error Occured Executing Query";
+      $scope.statusText = "Error Occurred Executing Query";
       $scope.errorText = response.data.summary;
       $scope.maximized = false;
       $scope.results = [];
