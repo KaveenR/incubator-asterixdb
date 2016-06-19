@@ -88,7 +88,7 @@
         <table class="table table-hover asterix-table">
           <tbody>
             <tr ng-repeat="record in $parent.results track by $index">
-              <td ng-repeat="key in recordFunctions.ObjectKeys(record)" class="asterix-inline-item" ng-class="isRecordPlus(record[key])" ng-click="viewRecord(record)">
+              <td ng-repeat="key in recordFunctions.ObjectKeys(record)" class="asterix-inline-item" ng-class="isRecordPlus(record,key)" ng-click="viewRecord(record)">
                 <p class="small asterix-small">{{key == -1 ? 'value' : key}}</p>{{recordFunctions.ObjectValue(record,key)}}
               </td>
             </tr>

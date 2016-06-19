@@ -142,8 +142,14 @@ app.controller('queryCtrl', function($rootScope, $scope, $http, recordFunctions)
     return false;
   }
 
-  $scope.isRecordPlus = function(obj){
-      return $scope.recordFunctions.isNested(obj) ? "asterix-nested" : "";
+  $scope.isRecordPlus = function(obj,key){
+      var value;
+      if (key == -1){
+          value = obj;
+      }else{
+          value = obj[key];
+      }
+      return $scope.recordFunctions.isNested(value) ? "asterix-nested" : "";
   }
 
   $scope.viewRecord = function(obj){
