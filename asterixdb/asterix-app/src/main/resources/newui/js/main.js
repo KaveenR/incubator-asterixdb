@@ -50,7 +50,7 @@ app.service('recordFunctions', function(){
         value = obj[key];
     }
     if (typeStr === "[object Array]"){
-      return "Record +";
+      return "List +";
     }else if (typeStr === "[object Object]"){
       return "Record +";
     }else if (typeStr == "[object Null]"){
