@@ -164,6 +164,12 @@ app.controller('queryCtrl', function($rootScope, $scope, $http, recordFunctions)
 
   $scope.save = function(query, database){
     var toSave = [query, database];
+    if ($scope.history.length >= 1){
+        var i = $scope.history.length - 1;
+        if (new String(query).valueOf() === new String($scope.history[i][0]).valueOf()){
+            if (new String(database).valueOf() === new String($scope.history[i][1]).valueOf()) return;
+        }
+    }
     if($scope.history.push(toSave) == 11){
       $scope.history.shift();
     }
