@@ -41,7 +41,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class QueryWebInterfaceServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private HashMap<String,String> fileMimePair = new HashMap<String,String>();
+    private static final HashMap<String,String> fileMimePair = new HashMap<>();
 
     public QueryWebInterfaceServlet(){
         fileMimePair.put("png","image/png");
@@ -60,7 +60,7 @@ public class QueryWebInterfaceServlet extends HttpServlet {
         String resourcePath = null;
         String requestURI = request.getRequestURI();
 
-        if (requestURI.equals("/")) {
+        if ("/".equals(requestURI)) {
             response.setContentType("text/html");
             resourcePath = "/newui/queryui.html";
         } else {
@@ -93,7 +93,4 @@ public class QueryWebInterfaceServlet extends HttpServlet {
         }
     }
 
-    private static boolean isSet(String requestParameter) {
-        return (requestParameter != null && requestParameter.equals("true"));
-    }
 }
