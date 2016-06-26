@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <title>AsterixDB Console</title>
-  <link rel="stylesheet" href="/newui/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="/newui/css/bootstrap-theme.min.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="/newui/css/master.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="/newui/css/json-formatter.min.css" media="screen" title="no title" charset="utf-8">
-  <link rel="stylesheet" href="/newui/css/codemirror.css" media="screen" title="no title" charset="utf-8">
-  <script src="/newui/js/jquery-1.12.4.min.js" charset="utf-8"></script>
-  <script src="/newui/js/angular.min.js" charset="utf-8"></script>
-  <script src="/newui/js/json-formatter.min.js" charset="utf-8"></script>
-  <script src="/newui/js/bootstrap.min.js" charset="utf-8"></script>
-  <script src="/newui/js/codemirror.js" charset="utf-8"></script>
-  <script src="/newui/js/ui-codemirror.js" charset="utf-8"></script>
-  <script src="/newui/js/aql-mode.js" charset="utf-8"></script>
-  <script src="/newui/js/javascript.js" charset="utf-8"></script>
-  <script src="/newui/js/main.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="/queryui/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/queryui/css/bootstrap-theme.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/queryui/css/master.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/queryui/css/json-formatter.min.css" media="screen" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="/queryui/css/codemirror.css" media="screen" title="no title" charset="utf-8">
+  <script src="/queryui/js/jquery-1.12.4.min.js" charset="utf-8"></script>
+  <script src="/queryui/js/angular.min.js" charset="utf-8"></script>
+  <script src="/queryui/js/json-formatter.min.js" charset="utf-8"></script>
+  <script src="/queryui/js/bootstrap.min.js" charset="utf-8"></script>
+  <script src="/queryui/js/codemirror.js" charset="utf-8"></script>
+  <script src="/queryui/js/ui-codemirror.js" charset="utf-8"></script>
+  <script src="/queryui/js/aql-mode.js" charset="utf-8"></script>
+  <script src="/queryui/js/javascript.js" charset="utf-8"></script>
+  <script src="/queryui/js/main.js" charset="utf-8"></script>
 </head>
 <body ng-app="queryui">
   <div class="row main-container" ng-controller="queryCtrl" ng-init="init()">
     <div class="col-md-4 left-container" ng-class="maximized == true ? 'col-md-12' : 'col-md-4'">
       <div class="row">
-        <div class="col-sm-12"><img class="logo" src="/newui/img/finalasterixlogo.png" alt="" /></div>
+        <div class="col-sm-12"><img class="logo" src="/queryui/img/finalasterixlogo.png" alt="" /></div>
       </div>
       <div class="row">
         <div class="col-sm-12">
@@ -113,7 +113,6 @@
             <div id="input-tab">
               <ul class="nav nav-justified asterix-nav">
                 <li ng-class="current_preview_tab == 0 ? 'asterix-nav-active' : '' "><a href="#" ng-click="current_preview_tab = 0">Record Viewer</a></li>
-                <li ng-class="current_preview_tab == 1 ? 'asterix-nav-active' : '' "><a href="#" ng-click="current_preview_tab = 1">JSON</a></li>
                 <!-- <li><a href="#" data-dismiss="modal">
                   <span class="glyphicon glyphicon-remove"></span>
                 </a></li> -->

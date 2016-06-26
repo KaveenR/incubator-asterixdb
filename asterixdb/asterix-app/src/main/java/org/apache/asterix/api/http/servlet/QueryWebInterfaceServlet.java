@@ -62,7 +62,7 @@ public class QueryWebInterfaceServlet extends HttpServlet {
 
         if ("/".equals(requestURI)) {
             response.setContentType("text/html");
-            resourcePath = "/newui/queryui.html";
+            resourcePath = "/queryui/queryui.html";
         } else {
             resourcePath = requestURI;
         }
