@@ -19,31 +19,30 @@
 package org.apache.asterix.api.http.servlet;
 
 import org.apache.commons.io.IOUtils;
-import org.stringtemplate.v4.ST;
 
-import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
 
-import javax.imageio.ImageIO;
-import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
+
 public class QueryWebInterfaceServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private static final HashMap<String,String> fileMimePair = new HashMap<>();
+    private static final Log LOG = LogFactory.getLog(QueryWebInterfaceServlet.class);
 
     public QueryWebInterfaceServlet(){
+        LogManager.getRootLogger().setLevel(Level.DEBUG);
         fileMimePair.put("png","image/png");
         fileMimePair.put("eot","application/vnd.ms-fontobject");
         fileMimePair.put("svg","image/svg+xml\t");
@@ -56,7 +55,7 @@ public class QueryWebInterfaceServlet extends HttpServlet {
     }
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String resourcePath = null;
         String requestURI = request.getRequestURI();
 
@@ -69,7 +68,11 @@ public class QueryWebInterfaceServlet extends HttpServlet {
 
         try (InputStream is = APIServlet.class.getResourceAsStream(resourcePath)) {
             if (is == null) {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                try{
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                }catch(IllegalStateException | IOException e){
+                    LOG.error(e);
+                }
                 return;
             }
             // Multiple MIME type support
@@ -81,7 +84,9 @@ public class QueryWebInterfaceServlet extends HttpServlet {
                         out = response.getOutputStream();
                         IOUtils.copy(is, out);
 
-                    } finally {
+                    } catch(IOException e){
+                        LOG.info(e);
+                    } finally{
 
                         if (out != null) {
                             IOUtils.closeQuietly(out);
@@ -92,7 +97,11 @@ public class QueryWebInterfaceServlet extends HttpServlet {
                     return;
                 }
             }
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            try{
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST);
+            }catch(IllegalStateException | IOException e){
+                LOG.error(e);
+            }
         }
     }
 
