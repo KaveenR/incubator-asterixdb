@@ -74,15 +74,18 @@ public class QueryWebInterfaceServlet extends HttpServlet {
             }
             // Multiple MIME type support
             for (Map.Entry<String, String> entry : fileMimePair.entrySet()) {
+                OutputStream out = null;
                 if (resourcePath.endsWith(entry.getKey())) {
                     response.setContentType(entry.getValue());
-                    OutputStream out = response.getOutputStream();
                     try {
+                        out = response.getOutputStream();
                         IOUtils.copy(is, out);
 
                     } finally {
 
-                        IOUtils.closeQuietly(out);
+                        if (out != null) {
+                            IOUtils.closeQuietly(out);
+                        }
                         IOUtils.closeQuietly(is);
 
                     }
