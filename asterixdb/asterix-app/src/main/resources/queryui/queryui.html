@@ -113,6 +113,7 @@
             <div id="input-tab">
               <ul class="nav nav-justified asterix-nav">
                 <li ng-class="current_preview_tab == 0 ? 'asterix-nav-active' : '' "><a href="#" ng-click="current_preview_tab = 0">Record Viewer</a></li>
+                <li ng-class="current_preview_tab == 1 ? 'asterix-nav-active' : '' "><a href="#" ng-click="current_preview_tab = 1">JSON Viewer</a></li>
                 <!-- <li><a href="#" data-dismiss="modal">
                   <span class="glyphicon glyphicon-remove"></span>
                 </a></li> -->
@@ -121,8 +122,7 @@
               <json-formatter open="2" ng-if="selectedItem != null" json="selectedItem"></json-formatter>
               </div>
               <div class="asterix-tabpage" ng-if="current_preview_tab == 1">
-                <!--<code ng-bind="previewJSON(selectedItem)"></code>-->
-                  <textarea ui-codemirror="queryPreviewOptions" ng-model="previewJSON(selectedItem)"></textarea>
+                <pre ng-bind="previewJSON(selectedItem)"></pre>
               </div>
             </div>
           </div>
