@@ -101,6 +101,7 @@ app.controller('queryCtrl', function($rootScope, $scope, $http, recordFunctions)
   $scope.errorText = null;
   $scope.statusText = "Wait...";
   $scope.query_input =  "";
+  $scope.uiReady = false;
 
   $scope.queryCmOptions ={
       lineNumbers: true,
@@ -131,6 +132,7 @@ $scope.init= function(){
         $scope.dataverses.push(response.data[i].DataverseName);
         $scope.selected_dataverse = $scope.dataverses[0];
         $scope.statusText = "Web UI Ready";
+        $scope.uiReady = true;
       }
     },
     function(response){

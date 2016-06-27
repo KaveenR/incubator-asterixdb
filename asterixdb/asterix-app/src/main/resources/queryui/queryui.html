@@ -69,7 +69,8 @@
       </div>
       <div class="row vh-spacer">
         <div class="col-sm-12">
-          <button type="button" class="btn btn-asterix center-block" ng-click="query()">Run</button>
+          <button type="button" class="btn btn-asterix center-block" ng-click="query()" ng-if="uiReady">Run</button>
+          <button type="button" class="btn btn-asterix center-block" ng-if="!uiReady">Loading Wait..</button>
         </div>
       </div>
     </div>
