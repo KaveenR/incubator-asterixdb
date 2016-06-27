@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var SERVER_HOST = "http://"+location.hostname+":19002";
+var SERVER_HOST = "";
 var DATAVERSE_QUERY = "for $x in dataset Metadata.Dataverse return $x;"
 var DATE_TIME_REGEX = /^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z)$/;
 var DATE_REGEX = /^(\d{4}-\d{2}-\d{2})$/;
@@ -99,7 +99,7 @@ app.controller('queryCtrl', function($rootScope, $scope, $http, recordFunctions)
   $scope.selectedItem = null;
   $scope.selected_dataverse = "";
   $scope.errorText = null;
-  $scope.statusText = "Web UI Ready";
+  $scope.statusText = "Wait...";
   $scope.query_input =  "";
 
   $scope.queryCmOptions ={
@@ -116,11 +116,21 @@ app.controller('queryCtrl', function($rootScope, $scope, $http, recordFunctions)
       readOnly : true
   }
 
-  $scope.init = function(){
+$scope.init= function(){
+    $http.post("/").then(function(response){
+        SERVER_HOST = location.protocol + "//" + location.hostname + ":" + response.data.api_port;
+        $scope.initDataverses();
+    },function(response){
+        $scope.statusText = "Unable to get Asterix HTTP API Port";
+    });
+}
+
+  $scope.initDataverses = function(){
     $http.get(SERVER_HOST+"/query?query="+encodeURI(DATAVERSE_QUERY)).then(function(response){
       for (i in response.data){
         $scope.dataverses.push(response.data[i].DataverseName);
         $scope.selected_dataverse = $scope.dataverses[0];
+        $scope.statusText = "Web UI Ready";
       }
     },
     function(response){
