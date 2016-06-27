@@ -18,11 +18,14 @@
  */
 package org.apache.asterix.api.http.servlet;
 
+import org.apache.asterix.common.config.AsterixExternalProperties;
+import org.apache.asterix.om.util.AsterixAppContextInfo;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -102,6 +105,25 @@ public class QueryWebInterfaceServlet extends HttpServlet {
             }catch(IllegalStateException | IOException e){
                 LOG.error(e);
             }
+        }
+    }
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setCharacterEncoding("utf-8");
+        response.setContentType("application/json");
+        AsterixExternalProperties externalProperties = AsterixAppContextInfo.getInstance().getExternalProperties();
+        try {
+            PrintWriter out = response.getWriter();
+            out.println("{\"api_port\" : \""+ externalProperties.getAPIServerPort() + "\"}");
+            return;
+        }catch(Exception e){
+            LOG.error(e);
+        }
+
+        try{
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+        }catch(IllegalStateException | IOException e){
+            LOG.error(e);
         }
     }
 
