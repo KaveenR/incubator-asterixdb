@@ -167,7 +167,6 @@ html,body{
 }
 
 .asterix-well{
-  min-width: 30%;
   background-color: #FFF;
   padding: 10px;
   border: 2px solid #d7d0cb;
@@ -175,7 +174,7 @@ html,body{
 }
 
 .flex-well{
-  flex : 0 1 auto;
+  flex : 1 1 auto;
   flex-basis: 1;
   margin: 10px;
 }
