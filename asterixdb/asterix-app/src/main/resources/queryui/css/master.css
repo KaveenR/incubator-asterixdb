@@ -10,6 +10,7 @@ html,body{
 }
 
 .left-container{
+  transition:width .8s ease;
   height:100%;
   padding: 25px;
   background-color: #ffffff;
@@ -17,6 +18,7 @@ html,body{
   overflow-y: auto;
 }
 .right-container{
+  transition:width .8s ease;
   height:100%;
   padding: 25px;
   padding-left: 50px !important;
@@ -100,6 +102,11 @@ html,body{
 
 .logo {
   width: 15vh;
+}
+
+.logo-collapsed{
+  transform: rotate(90deg);
+  transition: .8s ease;
 }
 
 .icon-maximize{

@@ -93,6 +93,7 @@ app.controller('queryCtrl', function($rootScope, $scope, $http, recordFunctions)
   $scope.current_preview_tab = 0;
   $scope.current_list = 0;
   $scope.maximized = false;
+  $scope.collapsed = false;
   $scope.results = [];
   $scope.history = [];
   $scope.dataverses = [];
@@ -215,6 +216,30 @@ $scope.init= function(){
       $scope.current_tab = 0;
       $scope.query_input = entry[0];
       $scope.selected_dataverse = entry[1];
+  }
+
+  $scope.leftContainerClass =function(){
+      if ($scope.maximized){
+           return 'col-md-12';
+      }else{
+           if($scope.collapsed){
+               return 'col-md-1';
+           }else{
+               return 'col-md-4'
+           }
+      }
+  }
+
+  $scope.rightContainerClass =function(){
+      if ($scope.maximized){
+           return 'col-md-0';
+      }else{
+           if($scope.collapsed){
+               return 'col-md-11';
+           }else{
+               return 'col-md-8'
+           }
+      }
   }
 
 });
