@@ -10,15 +10,15 @@ html,body{
 }
 
 .left-container{
-  transition:width .8s ease;
+  transition:width .8s ease-out;
   height:100%;
   padding: 25px;
   background-color: #ffffff;
-  overflow: hidden;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 .right-container{
-  transition:width .8s ease;
+  transition:width .8s ease-out;
   height:100%;
   padding: 25px;
   padding-left: 50px !important;
@@ -105,7 +105,7 @@ html,body{
 }
 
 .logo-collapsed{
-  transform: rotate(90deg);
+  width : 90%;
   transition: .8s ease;
 }
 

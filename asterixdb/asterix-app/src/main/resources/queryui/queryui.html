@@ -22,10 +22,19 @@
   <div class="row main-container" ng-controller="queryCtrl" ng-init="init()">
     <div class="col-md-4 left-container" ng-class="leftContainerClass()">
         <div>
-            <div class="row">
-                <div class="col-sm-10"><img class="logo" src="/queryui/img/finalasterixlogo.png" alt=""
-                    ng-class="collapsed ? 'logo-collapsed' : ''"/></div>
-                <div class="col-sm-2 text-right"><span class="glyphicon glyphicon-menu-hamburger asterix-button"
+            <div class="row" ng-show="collapsed">
+                <div class="row-fluid">
+                    <div class="col-sm-12 text-center"><img class="logo-collapsed" src="/queryui/img/asterixlogo-collapsed.png" alt=""/></div>
+                </div>
+                <div class="row-fluid">
+                    <div class="col-sm-12 text-center"><span class="glyphicon glyphicon-menu-hamburger asterix-button"
+                                                           ng-class="collapsed == true ? 'asterix-button-selected' : '' "
+                                                           ng-click="collapsed = !collapsed"></span></div>
+                </div>
+            </div>
+            <div class="row" ng-hide="collapsed">
+                <div class="col-sm-10"><img class="logo" src="/queryui/img/finalasterixlogo.png" alt=""/></div>
+                <div class="col-sm-2 text-right" ng-hide="maximized"><span class="glyphicon glyphicon-menu-hamburger asterix-button"
                                                        ng-class="collapsed == true ? 'asterix-button-selected' : '' "
                                                        ng-click="collapsed = !collapsed"></span></div>
             </div>
