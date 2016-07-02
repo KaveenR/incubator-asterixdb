@@ -38,6 +38,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
+import org.codehaus.jettison.json.JSONObject;
 
 public class QueryWebInterfaceServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -112,9 +113,11 @@ public class QueryWebInterfaceServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         response.setContentType("application/json");
         AsterixExternalProperties externalProperties = AsterixAppContextInfo.getInstance().getExternalProperties();
+        JSONObject obj = new JSONObject();
         try {
             PrintWriter out = response.getWriter();
-            out.println("{\"api_port\" : \""+ externalProperties.getAPIServerPort() + "\"}");
+            obj.put("api_port",String.valueOf(externalProperties.getAPIServerPort()));
+            out.println(obj.toString());
             return;
         }catch(Exception e){
             LOG.error(e);
