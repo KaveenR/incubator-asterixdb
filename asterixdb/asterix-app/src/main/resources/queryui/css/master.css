@@ -10,7 +10,7 @@ html,body{
 }
 
 .left-container{
-  transition:width .8s ease-out;
+  transition:width .3s ease-out;
   height:100%;
   padding: 25px;
   background-color: #ffffff;
@@ -18,7 +18,7 @@ html,body{
   overflow-y: auto;
 }
 .right-container{
-  transition:width .8s ease-out;
+  transition:width .3s ease-out;
   height:100%;
   padding: 25px;
   padding-left: 50px !important;
