@@ -13,6 +13,7 @@ html,body{
   transition:width .3s ease-out;
   height:100%;
   padding: 25px;
+  padding-left : 35px;
   background-color: #ffffff;
   overflow-x: hidden;
   overflow-y: auto;
@@ -106,6 +107,7 @@ html,body{
 
 .logo-collapsed{
   width : 90%;
+  max-width : 15vh;
   transition: .8s ease;
 }
 
