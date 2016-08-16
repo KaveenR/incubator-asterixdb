@@ -46,7 +46,6 @@ public class QueryWebInterfaceServlet extends HttpServlet {
     private static final Log LOG = LogFactory.getLog(QueryWebInterfaceServlet.class);
 
     public QueryWebInterfaceServlet(){
-        LogManager.getRootLogger().setLevel(Level.ERROR);
         fileMimePair.put("png","image/png");
         fileMimePair.put("eot","application/vnd.ms-fontobject");
         fileMimePair.put("svg","image/svg+xml\t");
